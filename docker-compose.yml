@@ -9,16 +9,17 @@ services:
     ports:
       - "18789:18789"
       - "18791:18791"
+    environment:
+      - NODE_ENV=production
+      # This follows the naming convention for the key the error mentioned:
+      - OPENCLAW_GATEWAY_BIND=custom
+      - OPENCLAW_GATEWAY_CUSTOM_BIND_HOST=0.0.0.0
+      - OPENCLAW_BROWSER_BIND=custom
+      - OPENCLAW_BROWSER_CUSTOM_BIND_HOST=0.0.0.0
+      - OPENCLAW_GATEWAY_ALLOW_UNCONFIGURED=true
     volumes:
-      - openclaw_data:/home/support/.openclaw
-    # We use 'custom' to unlock the --address flag
-    # We use --address 0.0.0.0 to fix the 'Connection Refused'
-    # We use --allow-unconfigured to bypass the setup block
-    command: >
-      node dist/index.js gateway 
-      --bind custom 
-      --allow-unconfigured
-      --port 18789
+      - openclaw_data:/root/.openclaw
+    command: ["node", "dist/index.js", "gateway"]
 
 volumes:
   openclaw_data:

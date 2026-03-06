@@ -20,7 +20,7 @@ services:
       GOOGLE_API_KEY: ${GOOGLE_API_KEY}
 
     volumes:
-      - openclaw_data:/home/node/.openclaw
+      - openclaw_data:/home/support/.openclaw
 
 volumes:
   openclaw_data:

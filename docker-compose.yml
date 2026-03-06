@@ -19,7 +19,7 @@ services:
       - OPENCLAW_GATEWAY_ALLOW_UNCONFIGURED=true
     volumes:
       - openclaw_data:/root/.openclaw
-    command: ["node", "dist/index.js", "gateway", "--allow-unconfigured"]
+    command: ["node", "dist/index.js", "gateway", "--allow-unconfigured","--host", "0.0.0.0"]
 
 volumes:
   openclaw_data:

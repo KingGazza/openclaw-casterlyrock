@@ -17,7 +17,6 @@ services:
     command: >
       node dist/index.js gateway 
       --bind custom 
-      --address 0.0.0.0 
       --allow-unconfigured
       --port 18789
 

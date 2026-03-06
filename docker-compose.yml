@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  openclaw:
+    image: openclaw/openclaw:latest
+    container_name: openclaw
+    restart: unless-stopped
+
+    ports:
+      - "18789:18789"
+
+    environment:
+      # Remote Ollama server
+      MODEL_BACKEND_URL: http://winterfell.lan:11434
+
+      # API providers
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+
+      DEFAULT_PROVIDER: ollama
+
+    volumes:
+      - openclaw_data:/app/data
+
+volumes:
+  openclaw_data:

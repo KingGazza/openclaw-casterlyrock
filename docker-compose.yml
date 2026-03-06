@@ -13,8 +13,8 @@ services:
       - OPENCLAW_GATEWAY_HOST=0.0.0.0
     volumes:
       - openclaw_data:/home/node/.openclaw
-    # Added --allow-unconfigured to bypass the setup block
-    command: ["node", "dist/index.js", "gateway", "--bind", "0.0.0.0", "--allow-unconfigured"]
+    # Use "custom" for --bind and explicitly set the host to 0.0.0.0
+    command: ["node", "dist/index.js", "gateway", "--bind", "custom", "--host", "0.0.0.0", "--allow-unconfigured"]
 
 volumes:
   openclaw_data:

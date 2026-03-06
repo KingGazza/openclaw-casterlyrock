@@ -10,6 +10,9 @@ services:
       - "18789:18789"
 
     environment:
+      HOST: 0.0.0.0
+      PORT: 18789
+
       MODEL_BACKEND_URL: http://winterfell.lan:11434
 
       OPENAI_API_KEY: ${OPENAI_API_KEY}
@@ -17,7 +20,7 @@ services:
       GOOGLE_API_KEY: ${GOOGLE_API_KEY}
 
     volumes:
-      - openclaw_data:/app/data
+      - openclaw_data:/home/node/.openclaw
 
 volumes:
   openclaw_data:

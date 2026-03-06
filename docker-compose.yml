@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   openclaw:
-    image: cloudlookup/openclaw:latest
+    image: ghcr.io/openclaw/openclaw:latest
     container_name: openclaw
     restart: unless-stopped
 

@@ -5,21 +5,17 @@ services:
     image: ghcr.io/openclaw/openclaw:latest
     container_name: openclaw-gateway
     restart: unless-stopped
+    # Add this line to bypass the permission denied error
+    user: "root"
     ports:
       - "18789:18789"
       - "18791:18791"
     environment:
-      # These variables override the internal config defaults directly
-      - OPENCLAW_GATEWAY_HOST=0.0.0.0
-      - OPENCLAW_GATEWAY_PORT=18789
-      - OPENCLAW_BROWSER_HOST=0.0.0.0
-      - OPENCLAW_BROWSER_PORT=18791
-      # This tells the app it is running in a non-interactive environment
-      - OPENCLAW_SETUP_MODE=auto
       - NODE_ENV=production
+      - OPENCLAW_GATEWAY_HOST=0.0.0.0
+      - OPENCLAW_BROWSER_HOST=0.0.0.0
     volumes:
       - openclaw_data:/home/node/.openclaw
-    # Use the simplest command possible to let the env vars do the work
     command: ["node", "dist/index.js", "gateway", "--allow-unconfigured"]
 
 volumes:

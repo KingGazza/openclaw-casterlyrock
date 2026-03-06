@@ -10,12 +10,11 @@ services:
       - "18791:18791"
     environment:
       - NODE_ENV=production
-      # This env var works in recent versions to force the bind address
       - OPENCLAW_GATEWAY_HOST=0.0.0.0
     volumes:
       - openclaw_data:/home/node/.openclaw
-    # The --bind 0.0.0.0 is the critical fix for "Connection Refused"
-    command: ["node", "dist/index.js", "gateway", "--bind", "0.0.0.0"]
+    # Added --allow-unconfigured to bypass the setup block
+    command: ["node", "dist/index.js", "gateway", "--bind", "0.0.0.0", "--allow-unconfigured"]
 
 volumes:
   openclaw_data:

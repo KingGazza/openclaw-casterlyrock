@@ -13,8 +13,8 @@ services:
       - OPENCLAW_GATEWAY_PORT=18789
       - OPENCLAW_GATEWAY_ALLOW_UNCONFIGURED=true
     volumes:
+      - /home/support/openclaw/openclaw.json:/root/.openclaw/openclaw.json
       - openclaw_data:/root/.openclaw
-    # No ports section needed with host networking
     command: ["node", "dist/index.js", "gateway", "--allow-unconfigured"]
 
 volumes:

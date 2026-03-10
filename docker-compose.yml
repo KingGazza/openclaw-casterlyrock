@@ -13,7 +13,7 @@ services:
       - OPENCLAW_GATEWAY_PORT=18789
       - OPENCLAW_GATEWAY_ALLOW_UNCONFIGURED=true
     volumes:
-      - /home/support/openclaw/openclaw.json:/root/.openclaw/openclaw.json:rw
+      ##- /home/support/openclaw/openclaw.json:/root/.openclaw/openclaw.json:rw
       - openclaw_data:/root/.openclaw
     command: ["node", "dist/index.js", "gateway", "--allow-unconfigured"]
 
